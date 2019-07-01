@@ -5,8 +5,12 @@ const buildControl =(props)=>{
     return(
         <div className={styles.BuildControl}>
             <div className={styles.Label} >{props.label}</div>
-            <button className={styles.Less} onClick={event=>props.clickLess(props.label)}>Less</button>
-            <button className={styles.More} onClick={event=>props.clickMore(props.label)}>More</button>
+            <button 
+            className={styles.Less} 
+            onClick={props.clickLess} 
+            disabled={props.disabled}
+            >Less</button>
+            <button className={styles.More} onClick={props.clickMore}>More</button>
         </div>
     );
 };

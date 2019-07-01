@@ -7,13 +7,20 @@ const buildControls =(props)=>{
         return <BuildControl 
         label={type} 
         key={index} 
-        clickLess={(label)=>props.clickLess(label)}
-        clickMore={(label)=>props.clickMore(label)}
+        clickLess={()=>props.clickLess(type)}
+        clickMore={()=>props.clickMore(type)}
+        disabled={props.disabled[type]}
         />
     });
     return(
         <div className={styles.BuildControls}>
+        <p>Current Price: <strong>{props.price.toFixed(2)}</strong></p>
            {buildControls}
+           <button 
+           className={styles.OrderButton} 
+           disabled={!props.purchasable}
+           onClick={props.order}
+           >ORDER NOW</button>
         </div>
     );
 };
